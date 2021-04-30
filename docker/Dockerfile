@@ -9,11 +9,11 @@ ENV ANDROID_API_LEVELS                  android-30
 ENV ANDROID_BUILD_TOOLS_VERSION         30.0.2
 ENV ANDROID_SDK_URL			https://dl.google.com/android/repository/commandlinetools-linux-6858069_latest.zip
 
-RUN apt update                                                                                                                          
-RUN apt install -y sudo openjdk-11-jdk curl unzip gradle git                                                                            
+RUN apt update
+RUN apt install -y sudo openjdk-11-jdk curl unzip gradle git build-essential python3 python3-distutils
 RUN echo '%sudo ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers
 RUN groupadd --gid $GID $USER
-RUN useradd -rm -d /home/$USER -s /bin/bash -g $USER -G sudo -u $UID $USER                                                              
+RUN useradd -rm -d /home/$USER -s /bin/bash -g $USER -G sudo -u $UID $USER
 
 USER $USER
 WORKDIR /home/$USER
